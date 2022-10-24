@@ -59,7 +59,7 @@ public class ATM {
                     System.out.println("\nCurrent Account Balance: " + moneyFormat.format(Balance));
                     System.out.print("\nAmount you want to deposit from Account: ");
                     double amount = input.nextDouble();
-                    if ((Balance + amount) >= 0 && amount >= 0) {
+                    if (amount >= 0) {
                         calcDeposit(amount);
                         System.out.println("\nCurrent Account Balance: " + moneyFormat.format(Balance));
                         end = true;
@@ -148,6 +148,10 @@ public class ATM {
                     try {
                         System.out.println("\nEnter your customer number ");
                         cst_no = menuInput.nextInt();
+                        if (cst_no == 0) {
+                            System.out.println("Please enter another number: ");
+                            continue;
+                        }
                         for (Map.Entry<Integer, Account> ignored : data.entrySet()) {
                             if (!data.containsKey(cst_no)) {
                                 end = true;
